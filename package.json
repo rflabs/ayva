@@ -1,0 +1,21 @@
+{
+  "name": "ayva",
+  "version": "1.0.0",
+  "description": "Library for developing cross-platform voice applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "google",
+    "home",
+    "google",
+    "assistant",
+    "amazon",
+    "voice",
+    "siri"
+  ],
+  "author": "Refresh Labs",
+  "license": "ISC"
+}

@@ -1,5 +1,5 @@
 var GoogleAssistant = require('./GoogleAssistant')
-var IntentExecutor = require('../../IntentManagement/IntentExecutor')
+var IntentExecutor = require('../../Intents/IntentExecutor')
 
 var GoogleRequestParser = function(googleArgs, _res){
     //attach or create Device related to request

@@ -1,14 +1,14 @@
 
-let IntentExecutor = require('./IntentManagement/IntentExecutor')
-let RequestHandlers = require('./AssistantRequestHandlers')
-let Middleware = require('./IntentManagement/Middleware')
+let IntentMap = require('./Intents/IntentMap')
+let RequestHandlers = require('./RequestHandlers')
+let MiddlewareMap = require('./Middleware')
 
 let Ayva = {
     ExecuteRequest: RequestHandlers,
-    RegisterIntents: function(intentMap){
-        IntentExecutor.inject(intentMap)
+    Configure: {
+        RegisterIntents: IntentMap.inject,
+        RegisterMiddleware: MiddlewareMap.inject
     },
-    RegisterMiddleware: IntentExecutor.injectMiddleware,
     Middleware: Middleware
 }
 

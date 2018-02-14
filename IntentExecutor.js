@@ -7,13 +7,15 @@ var IntentExecutor = function(context){
     if(!StateManager.isIntentActive(context.state, context.intentName)){
         //do some error path
     } else {
-        context.intent = IntentMap[context.intentName]
+        context.intent = IntentMap.getIntent(context.intentName)
 
         //Middleware
         var middlewareForState = StateManager.getMiddleware(context.state)
         var middlewarePromises = []
         middlewareForState.map((middleware) => middlewarePromises.push(MiddlewareMap.getMiddleware(middleware)(context)))
-        Promise.all(middlewarePromises)
+        Promise.all(middlewarePromises).then(() => {
+            context.intent.execute(context);
+        });
     }
 }
 

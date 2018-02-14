@@ -1,13 +1,14 @@
 var GoogleAssistant = require('./GoogleAssistant')
-var IntentExecutor = require('../../IntentExecutor') //This is backwards. IntentExecutor should require the HandlerMap
+var ExecuteIntent = require('../../IntentExecutor') //This is backwards. IntentExecutor should require the HandlerMap
 
 var GoogleRequestParser = function(googleArgs, _res){
     //attach or create Device related to request
-     var args = googleArgs.result.parameters  || {};
-    
-    args.intentName = googleArgs.result.action
-    var deviceData = {id: googleArgs.originalRequest.data.user.userId, platform: 'google'}
-    IntentExecutor.execute(args, new GoogleAssistant(_res)) 
+    var context = {}
+    context.args = googleArgs.result.parameters  || {};
+    context.intentName = googleArgs.result.action
+    context.state = state
+    context.assistant = new GoogleAssistant(_res)
+    ExecuteIntent(context)
 }
 
 

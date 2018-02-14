@@ -15,7 +15,7 @@ var IntentExecutor = function(context){
         middlewareForState.map((middleware) => middlewarePromises.push(MiddlewareMap.getMiddleware(middleware)(context)))
         Promise.all(middlewarePromises).then(() => {
             Promise.resolve(context.intent(context))
-                .then((err) => console.log("I'm here")
+                .then((err) => console.log("I'm here"))
         });
     }
 }

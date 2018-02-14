@@ -5,7 +5,7 @@ var MiddlewareMap = require('./Middleware/MiddlewareMap')
 // var IntentExecutor = function(intent, state, platform, request){
 var IntentExecutor = function(context){
     if(!StateManager.isIntentActive(context.state, context.intentName)){
-        //do some error path
+        context.assistant.say("This intent is not active").finish()
     } else {
         context.intent = IntentMap.getIntent(context.intentName)
 
@@ -14,7 +14,7 @@ var IntentExecutor = function(context){
         var middlewarePromises = []
         middlewareForState.map((middleware) => middlewarePromises.push(MiddlewareMap.getMiddleware(middleware)(context)))
         Promise.all(middlewarePromises).then(() => {
-            context.intent.execute(context);
+            context.intent(context);
         });
     }
 }

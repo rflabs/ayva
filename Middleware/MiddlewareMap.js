@@ -7,7 +7,9 @@ var MiddlewareMap = function(){
             Object.assign(Middleware, _middleware)
         },
         getMiddleware: function(middlewareName){
-            return Middleware[middlewareName]
+            var m = Middleware[middlewareName] 
+            if (!m) throw new Error("Requested middleware " + middlewareName + " was not registered")
+            return m;
         }
     }
 }()

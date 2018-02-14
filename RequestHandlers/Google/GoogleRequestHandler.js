@@ -8,7 +8,10 @@ var GoogleRequestParser = function(googleArgs, state, _res){
     context.intentName = googleArgs.result.action
     context.state = state
     context.assistant = new GoogleAssistant(_res)
-    context.userId = googleArgs.originalRequest.data.user.userId
+    context.deviceProfile = {
+        platform: "google",
+        id: googleArgs.originalRequest.data.user.userId
+    }
     ExecuteIntent(context)
 }
 

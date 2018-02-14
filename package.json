@@ -17,5 +17,6 @@
     "siri"
   ],
   "author": "Refresh Labs",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }

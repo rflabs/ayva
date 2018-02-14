@@ -1,9 +1,12 @@
-
 var IntentMap = function(){
-    this.Intents = {};
-
-    this.registerIntents = function(_intentMap){
-        this.Intents = _intentMap;
+    var Intents = {};
+    return{
+        registerIntents: function(_intentMap){
+            Object.assign(Intents, _intentMap)
+        },
+        getIntent: function(name){
+            return Intents[name];
+        }
     }
 }()
 

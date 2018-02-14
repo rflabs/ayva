@@ -1,11 +1,15 @@
+var BuiltInMiddleware = require('.')
+
 var MiddlewareMap = function(){
-    this.middleware = [];
-
-    this.registerIntents = function(middleware){
-        this.middleware = middleware;
+    var Middleware = BuiltInMiddleware;
+    return {
+        registerMiddleware: function(_middleware){
+            Object.assign(Middleware, _middleware)
+        },
+        getMiddleware: function(middlewareName){
+            return Middleware[middlewareName]
+        }
     }
-
-    return this;
 }()
 
 module.exports = MiddlewareMap

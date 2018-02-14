@@ -1,7 +1,5 @@
 var LogInput = function(input){
-    return new Promise(function(resolve, reject){
-        resolve(console.log(input))
-    });
+    console.log(input)
 }
 
 module.exports = LogInput

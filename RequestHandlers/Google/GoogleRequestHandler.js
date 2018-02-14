@@ -6,7 +6,6 @@ var GoogleRequestParser = function(googleArgs, state, _res){
     var context = {}
     context.args = googleArgs.result.parameters  || {};
     context.intentName = googleArgs.result.action
-    context.state = state
     context.assistant = new GoogleAssistant(_res)
     context.deviceProfile = {
         platform: "google",

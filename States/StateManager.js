@@ -1,5 +1,6 @@
 var StateManager = function(){
-    var StateConfig;
+    var StateConfig, StateProvider;
+
     return {
         registerStates: function(stateConfig){
             StateConfig = stateConfig
@@ -9,6 +10,15 @@ var StateManager = function(){
         },
         getMiddleware: function(stateName){
             return StateConfig[stateName].middleware || []
+        },
+        registerStateProvider: function(stateProvider){
+            StateProvider = stateProvider;
+        },
+        getState: function(context){
+            return StateProvider.getState(context)
+        },
+        setState: function(state,context){
+            StateProvider.setState(state,context)
         }
     }
 }()

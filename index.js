@@ -9,7 +9,8 @@ let Ayva = {
     Config: {
         RegisterIntents: IntentMap.registerIntents,
         RegisterMiddleware: MiddlewareMap.registerMiddleware,
-        RegisterStates: StateManager.registerStates
+        RegisterStates: StateManager.registerStates,
+        StateProvider: StateManager.registerStateProvider
     },
     Middleware: Middleware
 }

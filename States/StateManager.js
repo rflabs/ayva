@@ -18,7 +18,7 @@ var StateManager = function(){
             return StateProvider.getState(context)
         },
         setState: function(state,context){
-            StateProvider.setState(state,context)
+            return StateProvider.setState(state,context)
         }
     }
 }()

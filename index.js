@@ -12,7 +12,8 @@ let Ayva = {
         RegisterStates: StateManager.registerStates,
         StateProvider: StateManager.registerStateProvider
     },
-    Middleware: Middleware
+    Middleware: Middleware,
+    StateManager: StateManager
 }
 
 

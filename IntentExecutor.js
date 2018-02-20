@@ -7,7 +7,7 @@ var IntentExecutor = function(context){
     StateManager.getState(context).then( (state)=> {
         context.state = state
         if(!StateManager.isIntentActive(context.state, context.intentName)){
-            throw new Error("This intent is inactive")
+            throw new InactiveIntentError(context)
         } else {
             context.intent = IntentMap.getIntent(context.intentName)
 
@@ -25,8 +25,9 @@ var IntentExecutor = function(context){
                 .catch((err) => {
                 })
         }
+    }).catch( (err) =>{
+        throw err
     })
-
 }
 
 module.exports = IntentExecutor;

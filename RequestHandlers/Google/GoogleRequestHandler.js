@@ -1,5 +1,5 @@
 var GoogleAssistant = require('./GoogleAssistant')
-var ExecuteIntent = require('../../IntentExecutor') //This is backwards. IntentExecutor should require the HandlerMap
+var ExecuteIntent = require('../../IntentExecutor') 
 
 var GoogleRequestParser = function(googleArgs, _res){
     //attach or create Device related to request
@@ -12,7 +12,6 @@ var GoogleRequestParser = function(googleArgs, _res){
         id: googleArgs.originalRequest.data.user.userId
     }
     ExecuteIntent(context)
-    
 }
 
 

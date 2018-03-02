@@ -46,7 +46,11 @@ var Alexa = function(_res, _deviceProfile){
         return this;
     }
 
-    this.finish = function(){
+    this.finish = function(opts){
+        if(opts){
+            if (opts.exit)
+                responseData.response.shouldEndSession = true;
+        }
         responseData.response.outputSpeech.ssml = this.speechBuilder.getSSML()
         res.status(resStatus).send(responseData);
     }

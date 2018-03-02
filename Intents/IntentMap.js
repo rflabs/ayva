@@ -1,8 +1,10 @@
+const Errors = require('../Errors')
+
 var IntentMap = function(){
     var Intents = {};
     return{
         registerIntents: function(_intentMap){
-            if(typeof(_intentMap) !== 'object') throw new Error("Intents must be registerd as objects")
+            if(typeof(_intentMap) !== 'object') throw new Error(Errors.INTENT_REGISTRATION)
             
             Object.assign(Intents, _intentMap)
         },

@@ -8,8 +8,13 @@ var AlexaRequestParser = function(alexaArgs, _res){
         if (alexaArgs.request.intent.slots) {
             let slots = alexaArgs.request.intent.slots
             var slotNames = Object.keys(slots)
+
+            //Extract slots, and get matched synonym value if applicable
             for (let i = 0; i < slotNames.length; i++) {
                 context.args[slotNames[i]] = slots[slotNames[i]].value;
+                context.args[slotNames[i] + '.original'] = slots[slotNames[i]].value;
+                if(slots[slotNames[i]].resolutions)
+                context.args[slotNames[i]] = slots[slotNames[i]].resolutions.resolutionsPerAuthority[0].values[0].value.name
             }
         }
         context.intentName = alexaArgs.request.intent.name

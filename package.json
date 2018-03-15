@@ -1,6 +1,6 @@
 {
   "name": "ayva",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Library for developing cross-platform voice applications",
   "main": "index.js",
   "scripts": {

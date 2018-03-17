@@ -1,10 +1,10 @@
 {
   "name": "ayva",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Library for developing cross-platform voice applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "alexa",
@@ -18,5 +18,8 @@
   ],
   "author": "Refresh Labs",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^22.3.0"
+  }
 }

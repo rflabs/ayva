@@ -8,7 +8,7 @@ var MiddlewareMap = function(){
         },
         getMiddleware: function(middlewareName){
             var m = Middleware[middlewareName] 
-            if (!m) throw new Error("Requested middleware " + middlewareName + " was not registered")
+            // if (!m) throw new Error("Requested middleware " + middlewareName + " was not registered")
             return m;
         }
     }

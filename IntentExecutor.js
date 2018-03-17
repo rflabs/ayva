@@ -1,6 +1,7 @@
 var IntentMap = require('./Intents/IntentMap')
 var StateManager = require('./States/StateManager')
 var MiddlewareMap = require('./Middleware/MiddlewareMap')
+var ErrorManager = require('./Errors/ErrorManager')
 
 // var IntentExecutor = function(intent, state, platform, request){
 var IntentExecutor = function(context){
@@ -24,8 +25,9 @@ var IntentExecutor = function(context){
                 .catch((err) => {
                 })
         }
+    }).catch( (err) =>{
+        ErrorManager.getErrorHandler(err.message)(context,err)
     })
-
 }
 
 module.exports = IntentExecutor;

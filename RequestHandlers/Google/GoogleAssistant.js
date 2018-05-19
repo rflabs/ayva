@@ -1,5 +1,4 @@
 var SSMLBuilder = require('../SSMLBuilder')
-var aog = require('actions-on-google');
 
 var GoogleAssistant = function(_res){
     var res = _res;

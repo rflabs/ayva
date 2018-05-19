@@ -47,8 +47,6 @@ var SpeechBuilder = function(){
     }
 
     this.emphasis = function(){
-        
-        
         return this;
     }
 

@@ -18,7 +18,9 @@
   ],
   "author": "Refresh Labs",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "actions-on-google": "^2.0.1"
+  },
   "devDependencies": {
     "jest": "^22.3.0"
   }

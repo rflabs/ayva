@@ -6,11 +6,10 @@ var ErrorManager = require('./Errors/ErrorManager')
 // var IntentExecutor = function(intent, state, platform, request){
 var IntentExecutor = function(context){
     StateManager.getState(context).then( (incomingState)=> {
+        console.log("Current State: " + incomingState)
         if(!StateManager.isIntentActive(incomingState, context.intentName)){
-            throw new Error("This intent is inactive")
+            throw new Error("InactiveIntentError")
         } else {
-            context.intent = IntentMap.getIntent(context.intentName)
-
             //Middleware
             var middlewareForState = StateManager.getMiddleware(incomingState)
             var middlewarePromises = []
@@ -18,6 +17,8 @@ var IntentExecutor = function(context){
             Promise.all(middlewarePromises)
                 .then(() => {
                     try{
+                        context.intent = IntentMap.getIntent(context.intentName)
+                        console.log("Executing Intent: " + context.intentName)
                         var promise = context.intent(context);
                     }catch(err){
                     }
@@ -26,6 +27,7 @@ var IntentExecutor = function(context){
                 })
         }
     }).catch( (err) =>{
+        console.log(err)
         ErrorManager.getErrorHandler(err.message)(context,err)
     })
 }

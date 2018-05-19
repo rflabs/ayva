@@ -1,4 +1,5 @@
 var SSMLBuilder = require('../SSMLBuilder')
+var aog = require('actions-on-google');
 
 var GoogleAssistant = function(_res){
     var res = _res;
@@ -10,7 +11,7 @@ var GoogleAssistant = function(_res){
     var responseData = {
         speech: "",
         displayText: "",
-        data: {"google":{"is_ssml":true,"no_input_prompts":[], "expect_user_response": true}},
+        data: {"google":{"is_ssml":true,"no_input_prompts":[{"ssml": "<speak></speak>"}], "expect_user_response": true}},
         contextOut: [],
         source: "",
         followupEvent: {}
@@ -52,6 +53,21 @@ var GoogleAssistant = function(_res){
 
     this.error = function(errorCode){
         resStatus = errorCode;
+        return this;
+    }
+
+    //FORMER TEST FUNCTION
+    this.location = function(){
+        this.say("PLACEHOLDER_FOR_SOME_REASON");
+        responseData.data.google.systemIntent = 
+        {
+            intent: "actions.intent.PERMISSION",
+            data: {
+                 "@type": "type.googleapis.com/google.actions.v2.PermissionValueSpec",
+                "opt_context": "To record your sighting",
+                "permissions": ["DEVICE_PRECISE_LOCATION"]
+            }
+        }
         return this;
     }
 

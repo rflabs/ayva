@@ -8,12 +8,41 @@ var GoogleRequestParser = function(googleArgs, _res){
     
     context.intentName = googleArgs.result.action
     context.assistant = new GoogleAssistant(_res)
-    console.log(context)
+
     context.deviceProfile = {
         platform: "google",
-        id: googleArgs.originalRequest.data.user.userId
+        id: googleArgs.originalRequest.data.user.userId,
+        isMobile: () => {
+          return googleArgs.originalRequest.data.surface.capabilities.includes("'actions.capability.SCREEN_OUTPUT'") || googleArgs.originalRequest.data.inputs[0].rawInputs[0].inputType == "KEYBOARD"
+        }
     }
-    ExecuteIntent(context)
+    checkForPermissions(context, googleArgs.originalRequest.data)
+        .then(ExecuteIntent(context))
+    
+}
+
+var checkForPermissions = function(context, requestData){
+    return new Promise((resolve, reject) => {
+        for(p in requestData.user.permissions)
+        {
+            const permission = requestData.user.permissions[p]
+            switch(permission){
+                case "DEVICE_PRECISE_LOCATION":
+                case "DEVICE_COARSE_LOCATION":
+                    console.log(requestData.device.location)
+                    context.location = requestData.device.location
+                    break;
+                case "NAME":
+                    console.log(requestData)
+                    break;
+                default: 
+                    console.log("No match for " + permission)
+                    break;
+            }
+        }
+        resolve()
+    });
+    
 }
 
 

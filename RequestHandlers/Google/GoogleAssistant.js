@@ -63,7 +63,7 @@ var GoogleAssistant = function(_res){
             intent: "actions.intent.PERMISSION",
             data: {
                  "@type": "type.googleapis.com/google.actions.v2.PermissionValueSpec",
-                "opt_context": "To record your sighting",
+                "opt_context": "I'll need your location in order to report this sighting. To grab your current location,",
                 "permissions": ["DEVICE_PRECISE_LOCATION"]
             }
         }

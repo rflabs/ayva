@@ -56,14 +56,14 @@ var GoogleAssistant = function(_res){
     }
 
     //FORMER TEST FUNCTION
-    this.location = function(){
+    this.location = function(script){
         this.say("PLACEHOLDER_FOR_SOME_REASON");
         responseData.data.google.systemIntent = 
         {
             intent: "actions.intent.PERMISSION",
             data: {
                  "@type": "type.googleapis.com/google.actions.v2.PermissionValueSpec",
-                "opt_context": "I'll need your location in order to report this sighting. To grab your current location,",
+                "opt_context": script,
                 "permissions": ["DEVICE_PRECISE_LOCATION"]
             }
         }

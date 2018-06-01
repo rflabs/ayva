@@ -13,7 +13,7 @@ var GoogleRequestParser = function(googleArgs, _res){
         platform: "google",
         id: googleArgs.originalRequest.data.user.userId,
         isMobile: () => {
-          return googleArgs.originalRequest.data.surface.capabilities.includes("'actions.capability.SCREEN_OUTPUT'") || googleArgs.originalRequest.data.inputs[0].rawInputs[0].inputType == "KEYBOARD"
+          return googleArgs.originalRequest.data.surface.capabilities.some((c) => {return c.name == 'actions.capability.SCREEN_OUTPUT'}) || googleArgs.originalRequest.data.inputs[0].rawInputs[0].inputType == "KEYBOARD"
         }
     }
     checkForPermissions(context, googleArgs.originalRequest.data)

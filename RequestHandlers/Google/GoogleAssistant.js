@@ -51,6 +51,12 @@ var GoogleAssistant = function(_res){
         return this;
     }
 
+    this.card = function(cardJSON){
+        responseData.data.google.richResponse = {"items":[]}            
+        responseData.data.google.richResponse.items.push(cardJSON)
+        return this;
+    }
+
     this.error = function(errorCode){
         resStatus = errorCode;
         return this;
@@ -77,10 +83,21 @@ var GoogleAssistant = function(_res){
                 responseData.data.google.expect_user_response = false; // close the microphone
         }
         responseData.speech = this.speechBuilder.getSSML();
+
         var reprompt = repeatForRepromptFlag ? responseData.speech : this.repromptBuilder.getSSML();
         responseData.data.google.no_input_prompts.push({
             ssml: reprompt
         })
+
+        //Hack to get cards working. We need to reconsider how to do rich responses as a whole
+        if(responseData.data.google.richResponse && responseData.data.google.richResponse.items.length)
+        {
+            responseData.data.google.richResponse.items.unshift({
+                "simpleResponse": {
+                  "ssml": responseData.speech
+                }
+              })
+        }
         res.status(resStatus).send(responseData);
     }
 

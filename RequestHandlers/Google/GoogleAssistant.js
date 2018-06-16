@@ -10,7 +10,7 @@ var GoogleAssistant = function(_res){
     var responseData = {
         speech: "",
         displayText: "",
-        data: {"google":{"is_ssml":true,"no_input_prompts":[{"ssml": "<speak></speak>"}], "expect_user_response": true}},
+        data: {"google":{"is_ssml":true,"no_input_prompts":[], "expect_user_response": true}},
         contextOut: [],
         source: "",
         followupEvent: {}

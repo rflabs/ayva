@@ -34,6 +34,7 @@ var GoogleAssistant = function(_res){
     this.repeatForReprompt = function(){
         repeatForRepromptFlag = true;
         this.reprompt = null;
+        return this;
     }
 
     this.setContext = function(contextName, lifespan) {

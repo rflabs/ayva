@@ -8,7 +8,7 @@ var GoogleRequestParser = function(googleArgs, _res){
     
     context.intentName = googleArgs.result.action
     context.assistant = new GoogleAssistant(_res)
-
+    context.rawInput = googleArgs.originalRequest.data.inputs[0].rawInputs[0].query
     context.deviceProfile = {
         platform: "google",
         id: googleArgs.originalRequest.data.user.userId,

@@ -77,6 +77,25 @@ var GoogleAssistant = function(_res){
         return this;
     }
 
+    // Notification permissions
+    this.notification = function(intent_name){
+        this.say("PLACEHOLDER_FOR_SOME_REASON");
+        responseData.data.google.systemIntent = 
+        {
+            intent: "actions.intent.PERMISSION",
+            data: {
+                    "@type": "type.googleapis.com/google.actions.v2.PermissionValueSpec",
+                "opt_context": undefined,
+                "permissions": ["UPDATE"],
+                "updatePermissionValueSpec": {
+                        arguments: undefined,
+                    "intent": intent_name
+                }
+            }
+        }
+        return this;
+    }
+
     this.finish = function(opts){
         if(opts){
             if (opts.exit)

@@ -35,6 +35,9 @@ var checkForPermissions = function(context, requestData){
                 case "NAME":
                     console.log(requestData)
                     break;
+                case "UPDATE":
+                    console.log(requestData)
+                    break;
                 default: 
                     console.log("No match for " + permission)
                     break;
